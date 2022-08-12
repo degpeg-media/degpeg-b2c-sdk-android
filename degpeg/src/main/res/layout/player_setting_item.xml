@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:layoutDirection="locale"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_5sdp"
+    android:paddingVertical="@dimen/_8sdp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/exo_check"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_3sdp"
+        android:tint="@color/colorPrimary"
+        android:src="@drawable/ic_check"
+        android:visibility="invisible"
+        tools:visibility="visible" />
+
+    <com.degpeg.views.TextView
+        android:id="@+id/exo_text"
+        style="@style/TextViewStyleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/_12ssp"
+        tools:text="Normal" />
+</LinearLayout>

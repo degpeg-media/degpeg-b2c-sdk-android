@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/gradient_top_to_bottom"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/_8sdp"
+    android:paddingTop="@dimen/_10sdp"
+    android:paddingBottom="@dimen/_20sdp">
+
+    <com.degpeg.views.CircularImageView
+        android:id="@+id/imgUserProfile"
+        android:layout_width="@dimen/_28sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        tools:src="@drawable/dummy_profile"
+        app:riv_mutate_background="true"
+        app:riv_oval="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtUserName"
+        style="@style/TextViewStyleBold"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_6sdp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="Calvin Kein"
+        android:textColor="@color/textColorWhite" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/liveIndicator"
+        style="@style/TextViewStyleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_red_corner"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/live"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_10ssp"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtUserCount"
+        style="@style/TextViewStyleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:background="@drawable/bg_black_light_corner"
+        android:drawableStart="@drawable/ic_view"
+        android:drawablePadding="@dimen/_5sdp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_3sdp"
+        android:stateListAnimator="@animator/selector_animator_less"
+        android:text="@string/_00"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_10ssp"
+        android:visibility="visible"
+        tools:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_3sdp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:padding="@dimen/_8sdp"
+        android:src="@drawable/ic_close"
+        android:stateListAnimator="@animator/selector_animator" />
+</LinearLayout>

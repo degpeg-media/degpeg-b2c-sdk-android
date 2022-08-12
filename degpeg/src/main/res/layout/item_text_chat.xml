@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="@dimen/activity_horizontal_margin"
+    android:paddingVertical="@dimen/_5sdp">
+
+    <com.degpeg.views.CircularImageView
+        android:id="@+id/imgChatProfile"
+        android:layout_height="@dimen/_25sdp"
+        android:layout_width="@dimen/_25sdp"
+        tools:src="@drawable/dummy_profile_1"
+        app:riv_border_color="@color/lightest_gray"
+        app:riv_border_width="1dp"
+        app:riv_oval="true" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txtMessage"
+        style="@style/TextViewStyleMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_6sdp"
+        android:layout_weight="1"
+        tools:text="Hi, How Are You?"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_12ssp" />
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "252422110686",
+    "project_id": "degpeg-67a4a",
+    "storage_bucket": "degpeg-67a4a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:252422110686:android:5ec4ae6130d110a618314f",
+        "android_client_info": {
+          "package_name": "com.degpeg.degpeg_sample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "252422110686-u1d9nqcnb49p435rhn8u0tgbm6jg8b3p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-TePfOqx_6zadxFCWsqA-V2_xE3COji0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "252422110686-u1d9nqcnb49p435rhn8u0tgbm6jg8b3p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

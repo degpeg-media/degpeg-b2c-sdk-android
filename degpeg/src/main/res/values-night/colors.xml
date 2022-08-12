@@ -1,0 +1,26 @@
+
+<resources>
+<!--    <color name="colorPrimary">#ffb2ba</color>-->
+<!--    <color name="onPrimary">#670020</color>-->
+<!--    <color name="primaryContainer">#910031</color>-->
+<!--    <color name="onPrimaryContainer">#ffd9dc</color>-->
+
+<!--    <color name="secondary">#ffb0cc</color>-->
+<!--    <color name="onSecondary">#5d1137</color>-->
+<!--    <color name="secondaryContainer">#7a294e</color>-->
+<!--    <color name="onSecondaryContainer">#ffd9e4</color>-->
+
+    <color name="background">#131313</color>
+    <color name="onBackground">#97f0ff</color>
+    <color name="nav_background">#131313</color>
+
+    <color name="textColorBlack">#000000</color>
+    <color name="textColorWhite">#ffffff</color>
+    <color name="textColorPrimary">#000000</color>
+    <color name="textColorSecondary">#7D7D7D</color>
+
+    <color name="transparent">@android:color/transparent</color>
+    <color name="white">#000000</color>
+    <color name="black">#ffffff</color>
+    <color name="black_light">#646464</color>
+</resources>

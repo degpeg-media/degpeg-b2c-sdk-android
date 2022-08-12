@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/black_alpha_20">
+    <item>
+        <selector>
+            <item android:state_pressed="true">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimary" />
+                    <size
+                        android:width="@dimen/_15sdp"
+                        android:height="@dimen/_15sdp" />
+                </shape>
+            </item>
+            <item android:state_focused="true">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimary" />
+                    <size
+                        android:width="@dimen/_15sdp"
+                        android:height="@dimen/_15sdp" />
+                </shape>
+            </item>
+            <item android:state_hovered="true">
+                <shape android:shape="oval">
+                    <solid android:color="@color/colorPrimary" />
+                    <size
+                        android:width="@dimen/_15sdp"
+                        android:height="@dimen/_15sdp" />
+                </shape>
+            </item>
+            <item>
+                <shape android:shape="oval">
+                    <solid android:color="@color/textColorWhite" />
+                    <size
+                        android:width="@dimen/_10sdp"
+                        android:height="@dimen/_10sdp" />
+                </shape>
+            </item>
+        </selector>
+    </item>
+</ripple>

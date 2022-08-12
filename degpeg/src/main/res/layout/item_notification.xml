@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_3sdp"
+    app:cardCornerRadius="@dimen/corner_radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_gray"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_6sdp">
+
+        <com.degpeg.views.TextView
+            android:id="@+id/txtTitle"
+            style="@style/TextViewStyleMedium"
+            android:textStyle="bold"
+            android:textSize="@dimen/_11ssp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vlog Shot event is on-air" />
+
+        <com.degpeg.views.TextView
+            android:id="@+id/txtDescription"
+            style="@style/TextViewStyleRegular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/_10ssp"
+            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod"
+            android:textColor="@color/textColorSecondary" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

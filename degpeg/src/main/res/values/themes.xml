@@ -1,0 +1,32 @@
+
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/onPrimary</item>
+        <item name="colorPrimaryContainer">@color/primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/onPrimaryContainer</item>
+        <item name="colorOnBackground">@color/onBackground</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnSecondaryContainer">@color/onSecondaryContainer</item>
+        <item name="colorOnSecondary">@color/onSecondary</item>
+        <item name="colorSecondaryContainer">@color/secondaryContainer</item>
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorAccent">@color/primaryContainer</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowTranslucentNavigation">false</item>
+        <item name="colorControlHighlight">@color/theme_selected</item>
+        <item name="bottomSheetDialogTheme">@style/BottomSheetDialogTheme</item>
+    </style>
+
+    <style name="AppTheme.White" parent="AppTheme">
+        <item name="android:statusBarColor">@color/nav_background</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:navigationBarColor">@color/nav_background</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="colorControlHighlight">@color/onPrimary</item>
+    </style>
+
+</resources>

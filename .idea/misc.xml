@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28388200085506626" />
+        <entry key="degpeg/src/main/res/drawable/blue_gradient.xml" value="0.261" />
+        <entry key="degpeg/src/main/res/drawable/gradient_bottom_to_top.xml" value="0.202" />
+        <entry key="degpeg/src/main/res/drawable/gradient_top_to_bottom.xml" value="0.202" />
+        <entry key="degpeg/src/main/res/drawable/like_chk_selector.xml" value="0.261" />
+        <entry key="degpeg/src/main/res/layout/activity_video_player.xml" value="0.25" />
+        <entry key="degpeg/src/main/res/layout/item_home_upcoming.xml" value="0.67" />
+        <entry key="degpeg/src/main/res/layout/item_product.xml" value="0.28388200085506626" />
+        <entry key="degpeg/src/main/res/layout/layout_chat_bottom.xml" value="0.9" />
+        <entry key="degpeg/src/main/res/layout/layout_player_toolbar.xml" value="0.2825994014536127" />
+      </map>
+    </option>
+  </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

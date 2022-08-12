@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pullToRefresh"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.degpeg.views.TextView
+            android:id="@+id/txtError"
+            style="@style/TextViewStyleSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="@dimen/_75sdp"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/no_data_found"
+            android:textColor="@color/textColorSecondary"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/contentLoader"
+            android:layout_width="@dimen/_28sdp"
+            android:layout_height="@dimen/_28sdp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="bottom"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorPrimary"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:orientation="vertical"
+            tools:context=".ui.fragment.HomeFragment">
+
+            <LinearLayout
+                android:id="@+id/layData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="@dimen/_15sdp">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPagerSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    tools:background="@color/secondaryContainer"
+                    tools:layout_height="@dimen/_200sdp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_3sdp"
+                    android:background="@drawable/shadow" />
+
+                <com.zhpan.indicator.IndicatorView
+                    android:id="@+id/sliderIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    app:vpi_orientation="horizontal"
+                    app:vpi_slide_mode="worm"
+                    app:vpi_slider_checked_color="#F7D0DC"
+                    app:vpi_slider_normal_color="#B9B9B9"
+                    app:vpi_style="round_rect" />
+
+                <include
+                    android:id="@+id/trending"
+                    layout="@layout/layout_trending_videos" />
+
+                <include
+                    android:id="@+id/categories"
+                    layout="@layout/layout_home_categories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp" />
+
+                <include
+                    android:id="@+id/upcomingShows"
+                    layout="@layout/layout_home_upcoming_show" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSliderImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_18sdp"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_slider_image" />
+
+                <com.kingfisher.easyviewindicator.RecyclerViewIndicator
+                    android:id="@+id/recyclerViewIndicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_2sdp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/square_indicator_gray"
+                    android:orientation="horizontal"
+                    android:visibility="gone"
+                    app:avi_animation_enable="true"
+                    app:avi_drawable="@drawable/square_indicator"
+                    app:avi_drawable_unselected="@drawable/square_indicator_gray"
+                    app:avi_height="@dimen/_3sdp"
+                    app:avi_margin="@dimen/_3sdp"
+                    app:avi_width="@dimen/_10sdp" />
+
+                <com.degpeg.views.TextView
+                    android:id="@+id/txtBrandTitle"
+                    style="@style/TextViewStyleBold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_14sdp"
+                    android:text="@string/brands_we_have"
+                    android:textColor="@color/colorPrimary"
+                    android:visibility="gone" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvBrands"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:visibility="gone"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/item_brand" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

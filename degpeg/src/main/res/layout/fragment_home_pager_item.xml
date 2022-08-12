@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:elevation="@dimen/_8sdp"
+    android:layout_height="wrap_content">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgVideoThumb"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dummy_thumb"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgVideoThumbOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/black_alpha_35"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imgPlay"
+        android:layout_width="@dimen/_45sdp"
+        android:layout_height="@dimen/_45sdp"
+        android:stateListAnimator="@animator/selector_animator"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_play_with_bg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.degpeg.views.TextView
+        android:id="@+id/txtLive"
+        style="@style/TextViewStyleMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/red"
+        android:paddingStart="@dimen/_6sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingEnd="@dimen/_5sdp"
+        android:paddingVertical="@dimen/_2sdp"
+        android:text="@string/live"
+        android:textColor="@color/textColorWhite"
+        android:textSize="@dimen/_9ssp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/activity_horizontal_margin"
+        android:paddingVertical="@dimen/activity_vertical_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <com.degpeg.views.CircularImageView
+                android:id="@+id/imgProfile"
+                android:layout_width="@dimen/_32sdp"
+                android:layout_height="@dimen/_32sdp"
+                tools:src="@drawable/dummy_profile"
+                app:riv_oval="true" />
+
+            <com.degpeg.views.TextView
+                android:id="@+id/txtUserName"
+                style="@style/TextViewStyleBase"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_6sdp"
+                android:layout_weight="1"
+                android:textSize="@dimen/_11ssp"
+                android:ellipsize="end"
+                android:fontFamily="@font/nunito_bold"
+                android:maxLines="1"
+                tools:text="Calvin Kein"
+                android:textColor="@color/textColorWhite"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <com.degpeg.views.TextView
+            android:id="@+id/txtEventName"
+            style="@style/TextViewStyleBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:ellipsize="end"
+            android:fontFamily="@font/nunito_extra_bold"
+            android:maxLines="1"
+            android:text="Desi Dress Style"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_16ssp"
+            android:textStyle="bold" />
+
+        <com.degpeg.views.TextView
+            android:id="@+id/txtEventDesc"
+            style="@style/TextViewStyleBase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod"
+            android:textColor="@color/textColorWhite"
+            android:textSize="@dimen/_11ssp" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

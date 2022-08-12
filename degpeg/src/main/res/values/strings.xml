@@ -1,0 +1,24 @@
+<resources>
+    <string name="sdk_name">Degpeg</string>
+
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="calender">Calender</string>
+    <string name="profile">Profile</string>
+    <string name="trending_videos">Trending Videos</string>
+    <string name="videos">Videos</string>
+    <string name="live">Live</string>
+    <string name="upcoming_shows">Upcoming Shows</string>
+    <string name="shows">Shows</string>
+    <string name="brands_we_have">Brands We Have</string>
+    <string name="we_have">We Have</string>
+    <string name="all_categories">All Categories</string>
+    <string name="upcoming">Upcoming</string>
+    <string name="logout">Logout</string>
+    <string name="notification">Notifications</string>
+    <string name="buy_now">Buy Now</string>
+    <string name="post_a_comment">Post a Comment</string>
+    <string name="playback_speed">Playback Speed</string>
+    <string name="no_data_found">No Data Found</string>
+    <string name="_00">00</string>
+</resources>
