@@ -37,7 +37,10 @@ As part of product enhancements Degpeg is looking for vendors to support product
  ```groovy
 allprojects {
     repositories {
-        maven { url 'https://jitpack.io' }
+         maven {
+            url "https://jitpack.io"
+            credentials { username 'jp_i6nttc8gkplpnmntma3brth0j9' }
+        }
     }
 }
 ```
