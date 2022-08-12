@@ -24,10 +24,11 @@ As part of product enhancements Degpeg is looking for vendors to support product
 
 # Preview
 
-<img src="https://drive.google.com/file/d/1UbFl0yFWki9CN7_Ve9llra-3HbERVQLg/view?usp=sharing" alt="dashboard" width="200" height="400"> 
+<p float="left">
+<img src="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/app/Dashboard.png" alt="dashboard" width="200" height="400"> 
 
-<img src="https://drive.google.com/file/d/1EfqMU3KgHzpbMviozf-Q7WNA11nt0RKw/view?usp=sharing" alt="player" width="200" height="400"> 
-
+<img src="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/app/Player.png" alt="player" width="200" height="400"> 
+</p>
 
 # SDK initialization and setup
 
