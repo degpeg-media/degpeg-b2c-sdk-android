@@ -1,8 +1,8 @@
 <h1 align="center">DEGPEG</h1>
-<!-- <p align="center">
-  <a href="https://jitpack.io/#DhavalBaldhaa/AndroidFilePicker"> <img src="https://jitpack.io/v/DhavalBaldhaa/AndroidFilePicker/month.svg" /></a>
-  <a href="https://jitpack.io/#DhavalBaldhaa/AndroidFilePicker"> <img src="https://jitpack.io/v/DhavalBaldhaa/AndroidFilePicker.svg" /></a>
-</p> -->
+<p align="center">
+  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android/month.svg" /></a>
+  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/></a>
+</p>
 
 Degpeg is Live Commerce Platform with unique features like multi-streaming ( compatible with 30+ Social platforms ) for brands & content creators worldwide. The vision of Degpeg is to empower live streaming in a way that can be used not only to produce real-time content but build a meaningful business out of it, for content creators or advertisers or associated businesses like e-commerce, retail, education, gaming etc.
 
@@ -46,7 +46,7 @@ allprojects {
 
 ```groovy
 dependencies {
-	  implementation 'com.github.DhavalBaldhaa:DEGPEG:Tag'
+     implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
 }
 ```
 
