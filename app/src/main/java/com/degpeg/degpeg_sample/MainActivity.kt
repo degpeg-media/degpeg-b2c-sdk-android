@@ -1,18 +1,12 @@
 package com.degpeg.degpeg_sample
 
-import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.degpeg_sample.databinding.ActivityMainBinding
 import com.degpeg.model.User
-import com.degpeg.utility.Log
-import com.degpeg.utility.Utils
-import com.degpeg.utility.getString
-import com.degpeg.utility.showToast
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var binding: ActivityMainBinding
