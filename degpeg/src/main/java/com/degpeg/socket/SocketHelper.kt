@@ -2,14 +2,16 @@ package com.degpeg.socket
 
 internal object SocketHelper {
     private const val BASE_URL = "interactionserver.degpeg.com"
-    private const val NAME_SPACE = "content-publisher"
+    internal const val NS_PUBLISHER = "content-publisher"
+    internal const val NS_PROVIDER = "content-provider"
 
     // <port> 9014 for dev.
-    const val DEV_URL = "https://dev.${BASE_URL}:9014/${NAME_SPACE}"
+    private const val DEV_URL = "https://dev.${BASE_URL}:9014/"
+    private const val PROD_URL = "https://prod.${BASE_URL}:9014/"
+    private const val STAGING_URL = "https://staging.${BASE_URL}:9014/"
+    private const val DEMO_URL = "https://demo.${BASE_URL}:9014/"
 
-    private const val PROD_URL = "https://prod.${BASE_URL}:9014/${NAME_SPACE}"
-    private const val STAGING_URL = "https://staging.${BASE_URL}:9014/${NAME_SPACE}"
-    private const val DEMO_URL = "https://demo.${BASE_URL}:9014/${NAME_SPACE}"
+    const val SOCKET_URL = DEV_URL
 
     const val JOIN_SESSION = "join"
     const val LEAVE_SESSION = "leave"

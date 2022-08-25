@@ -28,7 +28,7 @@ internal open class CountViewModel : ViewModel() {
 
     private fun getCountUpdateParam(liveSessionId: String): HashMap<String, Any> {
         val param = HashMap<String, Any>()
-        param["userId"] = LocalDataHelper.appUser?.userId.orEmpty()
+        param["userId"] = LocalDataHelper.appUser?.getNonNullUserId().orEmpty()
         param["time_stamp"] = DateTimeUtil.currentUTCTime()
         param["source"] = MOBILE_SOURCE
         param["liveSessionId"] = liveSessionId
@@ -72,8 +72,14 @@ internal open class CountViewModel : ViewModel() {
                     countModel.count = countModel.count.plus(1)
                     liveUsersLiveData.postValue(countModel)
 
+//                    SocketIO.emit(SocketHelper.UPDATE_VIEW,
+//                        JSONObject().apply {
+//                            put("count", countModel.count)
+//                            put("session_id", liveSessionId)
+//                        })
+
                     SocketIO.emit(SocketHelper.UPDATE_VIEW,
-                        JSONObject().apply {
+                        HashMap<String,Any>().apply {
                             put("count", countModel.count)
                             put("session_id", liveSessionId)
                         })
@@ -122,8 +128,14 @@ internal open class CountViewModel : ViewModel() {
                     countModel.count = countModel.count.plus(1)
                     likeCountLiveData.postValue(countModel)
 
+//                    SocketIO.emit(SocketHelper.UPDATE_LIKE,
+//                        JSONObject().apply {
+//                            put("count", countModel.count)
+//                            put("session_id", liveSessionId)
+//                        })
+//
                     SocketIO.emit(SocketHelper.UPDATE_LIKE,
-                        JSONObject().apply {
+                        HashMap<String,Any>().apply {
                             put("count", countModel.count)
                             put("session_id", liveSessionId)
                         })
@@ -176,8 +188,14 @@ internal open class CountViewModel : ViewModel() {
                     countModel.count = countModel.count.plus(1)
                     purchaseCountLiveData.postValue(countModel)
 
+//                    SocketIO.emit(SocketHelper.UPDATE_PURCHASE,
+//                        JSONObject().apply {
+//                            put("count", countModel.count)
+//                            put("session_id", liveSessionId)
+//                        })
+//
                     SocketIO.emit(SocketHelper.UPDATE_PURCHASE,
-                        JSONObject().apply {
+                        HashMap<String,Any>().apply {
                             put("count", countModel.count)
                             put("session_id", liveSessionId)
                         })
@@ -220,8 +238,14 @@ internal open class CountViewModel : ViewModel() {
                     countModel.count = countModel.count.plus(1)
                     shareCountLiveData.postValue(countModel)
 
+//                    SocketIO.emit(SocketHelper.UPDATE_SHARE,
+//                        JSONObject().apply {
+//                            put("count", countModel.count)
+//                            put("session_id", liveSessionId)
+//                        })
+
                     SocketIO.emit(SocketHelper.UPDATE_SHARE,
-                        JSONObject().apply {
+                        HashMap<String,Any>().apply {
                             put("count", countModel.count)
                             put("session_id", liveSessionId)
                         })

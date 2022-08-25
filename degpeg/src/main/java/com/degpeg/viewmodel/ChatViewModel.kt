@@ -63,7 +63,8 @@ internal class ChatViewModel : CountViewModel() {
                     socketParam["session_id"] = socketParam["liveSessionId"] as Any
                     socketParam.remove("liveSessionId")
                     socketParam.remove("userName")
-                    SocketIO.emit(CHAT_MESSAGE, socketParam.toJSONObject())
+//                    SocketIO.emit(CHAT_MESSAGE, socketParam.toJSONObject())
+                    SocketIO.emit(CHAT_MESSAGE, socketParam)
 
                     onSuccess.invoke()
                 }

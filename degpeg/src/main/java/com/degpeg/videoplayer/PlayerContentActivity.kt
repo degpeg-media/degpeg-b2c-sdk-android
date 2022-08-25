@@ -3,6 +3,10 @@ package com.degpeg.videoplayer
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.degpeg.b2csdk.DegpegSDKProvider
+import com.degpeg.b2csdk.DegpegSDKProvider.PROVIDER_ID
+import com.degpeg.b2csdk.DegpegSDKProvider.PUBLISHER_ID
+import com.degpeg.b2csdk.UserRole
 import com.degpeg.databinding.ActivityVideoPlayerBinding
 import com.degpeg.model.ChatItem
 import com.degpeg.model.CountModel
@@ -75,7 +79,7 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
         }
 
         // connect to socket
-        SocketIO.init(videoContentItem?.contentProviderId.orEmpty(), sessionId)
+        SocketIO.init(sessionId)
         SocketIO.connect()
     }
 
@@ -155,7 +159,7 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
     protected fun sendChatMessage() {
         val param = HashMap<String, Any>()
         param["time_stamp"] = currentUTCTime()
-        param["userId"] = appUser?.userId.orEmpty()
+        param["userId"] = appUser?.getNonNullUserId().orEmpty()
         param["userName"] = appUser?.userName.orEmpty()
         param["liveSessionId"] = sessionId
         param["message"] = binding.lyBottom.edtMessage.trim()

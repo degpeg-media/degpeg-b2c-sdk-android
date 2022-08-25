@@ -15,12 +15,17 @@ import androidx.viewpager2.widget.ViewPager2
 import com.degpeg.Controller
 import com.degpeg.R
 import com.degpeg.b2csdk.DegpegSDKProvider
+import com.degpeg.b2csdk.DegpegSDKProvider.PROVIDER_ID
+import com.degpeg.b2csdk.DegpegSDKProvider.PUBLISHER_ID
+import com.degpeg.b2csdk.UserRole
+import com.degpeg.b2csdk.UserRole.PROVIDER
 import com.degpeg.common.BaseFragment
 import com.degpeg.common.Navigation
 import com.degpeg.databinding.FragmentHomeBinding
 import com.degpeg.model.SessionCategoryItem
 import com.degpeg.model.VideoContentItem
 import com.degpeg.network.NetworkURL
+import com.degpeg.network.NetworkURL.RES_UNAUTHORISED
 import com.degpeg.network.typeCall
 import com.degpeg.ui.adapter.*
 import com.degpeg.utility.*
@@ -275,46 +280,61 @@ internal class HomeFragment() : BaseFragment(), View.OnClickListener {
             binding.contentLoader.visible()
         }
 
-        viewModel.getContentProviders(DegpegSDKProvider.PUBLISHER_ID)
-            .observe(this) { contentResponse ->
-                contentResponse.status.typeCall(
-                    success = {
-                        if (contentResponse.data != null) {
-                            viewModel.getContentProvidersWiseVideos(
-                                contentResponse.data.contentProviders,
-                                getFilter()
-                            ).observe(this) {
-                                it.status.typeCall(
-                                    success = { modifyData(it.data) },
-                                    error = { onError(it.message) }
-                                )
-                            }
-                        } else {
-                            onError(getString(R.string.no_data_found))
-                        }
-                    },
-                    error = {
-                        if (contentResponse.errorCode == NetworkURL.RES_UNAUTHORISED && !refreshTokenAttempt) {
-                            LocalDataHelper.authToken = ""
-                            refreshTokenAttempt = true
-                            DegpegSDKProvider.updateAuthToken(
-                                DegpegSDKProvider.APP_ID,
-                                DegpegSDKProvider.SECRET_KEY,
-                                onSuccess = {
-                                    activity?.runOnUiThread {
-                                        fetchData(isShowProgress)
-                                    }
-                                },
-                                onError = {
-                                    onError(getString(R.string.no_data_found))
-                                })
+        if (DegpegSDKProvider.USER_ROLE == PROVIDER) {
+            getProvidersSession(arrayListOf(PROVIDER_ID), isShowProgress)
+            return
+        }
 
-                        } else {
-                            onError(contentResponse.message)
-                        }
+        viewModel.getContentProviders(PUBLISHER_ID).observe(this) { contentResponse ->
+            contentResponse.status.typeCall(
+                success = {
+                    if (contentResponse.data != null) {
+                        getProvidersSession(contentResponse.data.contentProviders, isShowProgress)
+                    } else {
+                        onError(getString(R.string.no_data_found))
                     }
-                )
-            }
+                },
+                error = {
+                    if (contentResponse.errorCode == RES_UNAUTHORISED && !refreshTokenAttempt)
+                        unauthorisedError(isShowProgress)
+                    else onError(contentResponse.message)
+                }
+            )
+        }
+    }
+
+    private fun getProvidersSession(
+        providerIds: ArrayList<String>,
+        isShowProgress: Boolean = true
+    ) {
+        viewModel.getContentProvidersWiseVideos(
+            providerIds, getFilter()
+        ).observe(this) {
+            it.status.typeCall(
+                success = { modifyData(it.data) },
+                error = {
+                    if (it.errorCode == RES_UNAUTHORISED && !refreshTokenAttempt)
+                        unauthorisedError(isShowProgress)
+                    else onError(it.message)
+                }
+            )
+        }
+    }
+
+    private fun unauthorisedError(isShowProgress: Boolean = true) {
+        LocalDataHelper.authToken = ""
+        refreshTokenAttempt = true
+        DegpegSDKProvider.updateAuthToken(
+            DegpegSDKProvider.APP_ID,
+            DegpegSDKProvider.SECRET_KEY,
+            onSuccess = {
+                activity?.runOnUiThread {
+                    fetchData(isShowProgress)
+                }
+            },
+            onError = {
+                onError(getString(R.string.no_data_found))
+            })
     }
 
     private fun modifyData(data: ArrayList<VideoContentItem>?) {

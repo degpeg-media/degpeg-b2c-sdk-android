@@ -4,6 +4,9 @@ import com.degpeg.model.*
 import retrofit2.Response
 import retrofit2.http.*
 
+// role => publisher
+// role => provider 
+
 internal interface ApiService {
 
     @POST("users/auth/token")

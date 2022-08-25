@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/llBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:elevation="@dimen/_5sdp"
+        android:orientation="vertical"
+        android:paddingVertical="@dimen/_10sdp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <com.degpeg.views.TextView
+            style="@style/TextViewStyleSemiBold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="Setting"
+            android:textColor="@color/textColorBlack"
+            android:textSize="@dimen/_16ssp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputAppID"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:textColorHint="@color/textColorSecondary"
+            app:hintEnabled="true"
+            app:hintTextColor="@color/textColorSecondary"
+            app:startIconTint="@color/colorPrimary">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtAppId"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="App ID"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/textColorBlack"
+                android:textColorHint="@color/textColorSecondary"
+                tools:text="1232" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputSecretKey"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColorHint="@color/textColorSecondary"
+            app:hintTextColor="@color/textColorSecondary">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtSecretKey"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Secret Key"
+                android:imeOptions="actionNext"
+                android:inputType="text"
+                android:textColor="@color/textColorBlack"
+                android:textColorHint="@color/textColorSecondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.degpeg.views.TextView
+            style="@style/TextViewStyleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="User Role"
+            android:textColor="@color/textColorBlack"/>
+        <RadioGroup
+            android:id="@+id/rdgUser"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rbPublisher"
+                style="@style/TextViewStyleSemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Publisher" />
+
+            <RadioButton
+                android:id="@+id/rbProvider"
+                style="@style/TextViewStyleSemiBold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Provider" />
+
+        </RadioGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputPublisher"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColorHint="@color/textColorSecondary"
+            app:hintTextColor="@color/textColorSecondary">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtPublisherId"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Publisher ID"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/textColorBlack"
+                android:textColorHint="@color/textColorSecondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tvInputProvider"
+            style="@style/TextInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textColorHint="@color/textColorSecondary"
+            app:hintTextColor="@color/textColorSecondary">
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/edtProviderId"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Provider ID"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:textColor="@color/textColorBlack"
+                android:textColorHint="@color/textColorSecondary" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnUpdate"
+            style="@style/ButtonBlackStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginBottom="@dimen/_30sdp"
+            android:background="@drawable/bg_red_corner"
+            android:minWidth="@dimen/_150sdp"
+            android:onClick="@{(v)->clickListener.onClick(v)}"
+            android:text="Update"
+            android:textColor="@color/textColorWhite" />
+    </LinearLayout>
+</layout>

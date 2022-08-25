@@ -16,35 +16,66 @@ import com.degpeg.utility.LocalDataHelper
 import com.google.android.exoplayer2.MediaItem
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
+import java.lang.RuntimeException
 
 object DegpegSDKProvider {
 
     internal var APP_ID: String = ""
     internal var SECRET_KEY: String = ""
     internal var PUBLISHER_ID: String = ""
+    internal var PROVIDER_ID: String = ""
+    internal var USER_ROLE: UserRole = UserRole.PUBLISHER
 
     fun init(
         appId: String,
         secretKey: String,
+        publisherId: String = "",
+        providerId:String = "",
+        userRole: UserRole = UserRole.PUBLISHER,
+        requiredReset: Boolean = false,
         onSuccess: (() -> Unit)? = null,
         onError: ((errorMessage: String) -> Unit)? = null
     ) {
         this.APP_ID = appId
         this.SECRET_KEY = secretKey
+        this.PUBLISHER_ID = publisherId
+        this.PROVIDER_ID = providerId
+        this.USER_ROLE = userRole
+        if (requiredReset) {
+            LocalDataHelper.authToken = ""
+        }
         updateAuthToken(appId, secretKey, onSuccess, onError)
     }
 
-    fun startAsActivity(activity: Activity, publisherId: String) {
-        PUBLISHER_ID = publisherId
+    fun startAsActivity(
+        activity: Activity,
+        onError: ((errorMessage: String) -> Unit)? = null
+    ) {
+        if (LocalDataHelper.authToken.isNullOrEmpty()) {
+            onError?.invoke("AuthToken Required to start Activity")
+            return
+        }
+        if (LocalDataHelper.appUser == null) {
+            onError?.invoke("Set user information before use the SDK")
+            return
+        }
         activity.startActivity(Intent(activity, DegpegHomeActivity::class.java))
     }
 
     fun useAsFragment(
         supportFragmentManager: FragmentManager,
         @IdRes containerId: Int,
-        publisherId: String
+        onError: ((errorMessage: String) -> Unit)? = null
     ) {
-        PUBLISHER_ID = publisherId
+        if (LocalDataHelper.authToken.isNullOrEmpty()) {
+            onError?.invoke("AuthToken Required to start Activity")
+            return
+        }
+        if (LocalDataHelper.appUser == null) {
+            onError?.invoke("Set user information before use the SDK")
+            return
+        }
+
         val fragment = HomeFragment.newInstance()
         supportFragmentManager.commit {
             replace(containerId, fragment, fragment::class.java.simpleName)
@@ -92,7 +123,7 @@ object DegpegSDKProvider {
                     LocalDataHelper.authToken = data.token
                     onSuccess?.invoke()
                 } else {
-                    onError?.invoke(data?.error?.message ?: it.message())
+                    onError?.invoke(ResponseHandler.baseError(it).message)
                 }
             }
         )

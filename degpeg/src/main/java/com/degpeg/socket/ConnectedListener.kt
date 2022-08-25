@@ -12,7 +12,8 @@ internal class ConnectedListener : Emitter.Listener {
     override fun call(vararg arg: Any?) {
         Log.e("Socket", "Connected")
         SocketIO.status = SocketStatus.CONNECTED
-        SocketIO.emit(JOIN_SESSION, JSONObject().put("room", SocketIO.currentSessionId))
+//        SocketIO.emitObj(JOIN_SESSION, JSONObject().put("room", SocketIO.currentSessionId))
+        SocketIO.emit(JOIN_SESSION, hashMapOf(Pair("room", SocketIO.currentSessionId)))
         Utils.executeDelay({
             callbacks.values.forEach { it.onConnectAndJoined() }
         }, 1000)
