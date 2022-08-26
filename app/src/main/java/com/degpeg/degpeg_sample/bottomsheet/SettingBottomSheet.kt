@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.degpeg.Controller
 import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.b2csdk.UserRole
 import com.degpeg.degpeg_sample.LocalDataHelper
@@ -85,6 +86,15 @@ class SettingBottomSheet() : BaseBottomSheet(), View.OnClickListener {
                     userRole = LocalDataHelper.userRole,
                     requiredReset = true,
                     onSuccess = {
+                        requireActivity().runOnUiThread {
+                            Toast.makeText(
+                                requireActivity(),
+                                "Auth Token Updated Successfully",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            dismiss()
+                        }
+                        dismiss()
                     },
                     onError = {
                         requireActivity().runOnUiThread {
@@ -93,10 +103,10 @@ class SettingBottomSheet() : BaseBottomSheet(), View.OnClickListener {
                                 it,
                                 Toast.LENGTH_SHORT
                             ).show()
+                            dismiss()
                         }
                     }
                 )
-                dismiss()
             }
         }
     }
