@@ -12,6 +12,7 @@ import com.degpeg.model.ChatItem
 import com.degpeg.model.CountModel
 import com.degpeg.model.ProductModel
 import com.degpeg.model.VideoContentItem
+import com.degpeg.network.NetworkURL
 import com.degpeg.socket.ChatMessageListener
 import com.degpeg.socket.ConnectedListener
 import com.degpeg.socket.CountModelListener
@@ -190,7 +191,8 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
                 this.shareVideoLink(
                     "Hey join this event:${videoContentItem?.name}\n" +
                             "On ${videoContentItem?.dateTime.utcToLocal()}",
-                    videoContentItem?.webVideoUrl.orEmpty()
+                    NetworkURL.getShareUrl(sessionId)
+//                    videoContentItem?.webVideoUrl.orEmpty()
                 )
             }
             binding.lyBottom.btnLike -> {

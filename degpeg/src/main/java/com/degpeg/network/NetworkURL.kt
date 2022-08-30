@@ -1,11 +1,24 @@
 package com.degpeg.network
 
-internal object NetworkURL {
-    const val isDevelopment = true
-    private const val DEV_BASE_URL = "https://dev1.api.degpeg.com/"
-    private const val LIVE_BASE_URL = "https://dev1.api.degpeg.com/"
+import com.degpeg.b2csdk.DegpegSDKProvider
+import com.degpeg.b2csdk.DegpegSDKProvider.PROVIDER_ID
+import com.degpeg.b2csdk.DegpegSDKProvider.PUBLISHER_ID
+import com.degpeg.b2csdk.DegpegSDKProvider.USER_ROLE
+import com.degpeg.b2csdk.UserRole
+import com.degpeg.b2csdk.UserRole.PROVIDER
+import com.degpeg.enumuration.AppConfig
+import com.degpeg.enumuration.AppConfig.*
 
-    var ROOT_URL = if (isDevelopment) DEV_BASE_URL else LIVE_BASE_URL
+internal object NetworkURL {
+    val appConfig = DEV
+    val ROOT_URL: String
+        get() {
+            return when (appConfig) {
+                DEV -> "https://dev1.api.degpeg.com/"
+                STAGING -> "https://dev1.api.degpeg.com/"
+                PRODUCTION -> "https://dev1.api.degpeg.com/"
+            }
+        }
 
     // network constants
     const val DEVICE_TYPE_ANDROID = "Android"
@@ -28,4 +41,13 @@ internal object NetworkURL {
     const val RES_FORBIDDEN = 403
     const val RES_UNPROCESSABLE_ENTITY = 422
     const val RES_SERVER_ERROR = 500
+
+    fun getShareUrl(sessionId: String): String {
+        val id = if (USER_ROLE == PROVIDER) PROVIDER_ID else PUBLISHER_ID
+        return when (appConfig) {
+            DEV -> "https://dev.client.degpeg.com/?id=${id}&session=${sessionId}"
+            STAGING -> "https://staging.client.degpeg.com/?id=${id}&session=${sessionId}"
+            PRODUCTION -> "https://client.degpeg.com/?id=${id}&session=${sessionId}"
+        }
+    }
 }
