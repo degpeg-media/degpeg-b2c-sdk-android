@@ -23,14 +23,12 @@ internal data class UserDetail(
     val displayPicture: String?,
     val email: String?,
     val firstName: String?,
-    val firstname: String?,
     val gender: String?,
     val id: String?,
     val imgUrl: String?,
     val influencerId: String?,
     val isEmailVerified: Boolean,
     val lastName: String?,
-    val lastname: String?,
     val message: String?,
     val mobile: String?,
     val name: String?,
@@ -51,41 +49,39 @@ internal data class UserDetail(
     val websiteLink: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readByte() != 0.toByte(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.createStringArrayList(),
-        parcel.readString(),
-        parcel.createStringArrayList(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString(),
-        parcel.readString()
+        addrCity = parcel.readString(),
+        addrCountry = parcel.readString(),
+        addrPincode = parcel.readString(),
+        addrState = parcel.readString(),
+        address = parcel.readString(),
+        appId = parcel.readString(),
+        avatar = parcel.readString(),
+        consumerUserId = parcel.readString(),
+        contentProviderId = parcel.readString(),
+        contentPublisherId = parcel.readString(),
+        displayPicture = parcel.readString(),
+        email = parcel.readString(),
+        firstName = parcel.readString(),
+        gender = parcel.readString(),
+        id = parcel.readString(),
+        imgUrl = parcel.readString(),
+        influencerId = parcel.readString(),
+        isEmailVerified = parcel.readByte() != 0.toByte(),
+        lastName = parcel.readString(),
+        message = parcel.readString(),
+        mobile = parcel.readString(),
+        name = parcel.readString(),
+        organizationName = parcel.readString(),
+        otp = parcel.readString(),
+        password = parcel.readString(),
+        phone = parcel.readString(),
+        prefCategories = parcel.createStringArrayList(),
+        roleAssignedBy = parcel.readString(),
+        roles = parcel.createStringArrayList(),
+        secretKey = parcel.readString(),
+        signInThrough = parcel.readString(),
+        status = parcel.readString(),
+        websiteLink = parcel.readString()
     ) {
     }
 
@@ -103,14 +99,12 @@ internal data class UserDetail(
         parcel.writeString(displayPicture)
         parcel.writeString(email)
         parcel.writeString(firstName)
-        parcel.writeString(firstname)
         parcel.writeString(gender)
         parcel.writeString(id)
         parcel.writeString(imgUrl)
         parcel.writeString(influencerId)
         parcel.writeByte(if (isEmailVerified) 1 else 0)
         parcel.writeString(lastName)
-        parcel.writeString(lastname)
         parcel.writeString(message)
         parcel.writeString(mobile)
         parcel.writeString(name)
@@ -137,10 +131,15 @@ internal data class UserDetail(
         val CREATOR = parcelableCreator(::UserDetail)
     }
 
-    fun getNonNullName(): String? {
+    fun getNonNullName(): String {
         if (!name.isNullOrEmpty()) return name
         if (!firstName.isNullOrEmpty() && !lastName.isNullOrEmpty()) return "$firstName $lastName"
-        return email
+        if (!firstName.isNullOrEmpty()) return firstName
+        return getNameFromEmail()
+    }
+
+    fun getNameFromEmail(): String {
+        return email?.split("@")?.get(0) ?: ""
     }
 
     fun getInitials(): String {
