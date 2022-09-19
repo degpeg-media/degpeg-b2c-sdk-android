@@ -56,6 +56,7 @@ internal class VideoPlayerActivity : PlayerContentActivity() {
         binding.layoutTopBar.txtUserCount.setOnClickListener(this)
         binding.layoutTopBar.btnClose.setOnClickListener(this)
         binding.lyBottom.btnSend.setOnClickListener(this)
+        binding.lyBottom.btnMute.setOnClickListener(this)
         binding.lyBottom.edtMessage.setOnClickListener(this)
 
         binding.lyBottom.edtMessage.afterTextChanged {

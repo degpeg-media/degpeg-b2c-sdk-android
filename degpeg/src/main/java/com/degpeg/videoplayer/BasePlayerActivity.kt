@@ -159,7 +159,7 @@ internal abstract class BasePlayerActivity : BaseActivity(), View.OnClickListene
     /**
      * mute video
      * */
-    private fun muteVideo() {
+    protected fun muteVideo() {
         if (isMuted) {
             player?.volume = currentVolume
             isMuted = false
@@ -170,7 +170,11 @@ internal abstract class BasePlayerActivity : BaseActivity(), View.OnClickListene
         }
         if (isMuted) controller.btnMute.setImageResource(R.drawable.ic_volume_off)
         else controller.btnMute.setImageResource(R.drawable.ic_volume)
+
+        onMuteVideoChange(isMuted)
     }
+
+    abstract fun onMuteVideoChange(isMuted : Boolean)
 
     /**
      * abstract methods

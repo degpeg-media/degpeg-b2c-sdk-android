@@ -34,6 +34,7 @@ internal class ChatAdapter :
         fun bind(data: ChatItem) {
             binding.imgChatProfile.setImageWithInitial("", data.getInitials())
             binding.txtMessage.text = data.message.trim()
+            binding.txtUserName.text = data.getNonNullUserName()
         }
     }
 

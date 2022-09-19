@@ -21,6 +21,11 @@ internal data class ChatItem(
             ?.reduce { acc, s -> acc + s }?.uppercase()
     }
 
+    fun getNonNullUserName(): String {
+        return if (userName.isNullOrEmpty()) userId.takeIf { !userId.isNullOrEmpty() } ?: "Unknown"
+        else userName
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (javaClass != other?.javaClass) return false

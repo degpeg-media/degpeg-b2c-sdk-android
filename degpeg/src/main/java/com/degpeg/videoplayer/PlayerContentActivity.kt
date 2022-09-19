@@ -2,11 +2,7 @@ package com.degpeg.videoplayer
 
 import android.content.Intent
 import android.view.View
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.degpeg.b2csdk.DegpegSDKProvider
-import com.degpeg.b2csdk.DegpegSDKProvider.PROVIDER_ID
-import com.degpeg.b2csdk.DegpegSDKProvider.PUBLISHER_ID
-import com.degpeg.b2csdk.UserRole
+import com.degpeg.R
 import com.degpeg.databinding.ActivityVideoPlayerBinding
 import com.degpeg.model.ChatItem
 import com.degpeg.model.CountModel
@@ -154,6 +150,11 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
         }
     }
 
+    override fun onMuteVideoChange(isMuted: Boolean) {
+        if (isMuted) binding.lyBottom.btnMute.setBackgroundResource(R.drawable.ic_mute)
+        else binding.lyBottom.btnMute.setBackgroundResource(R.drawable.ic_unmute)
+    }
+
     /**
      * Send chat message
      * */
@@ -200,6 +201,9 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
             }
             binding.lyBottom.edtMessage -> {
                 if (!binding.rvChat.isVisible()) binding.rvChat.visible()
+            }
+            binding.lyBottom.btnMute -> {
+                muteVideo()
             }
         }
     }
