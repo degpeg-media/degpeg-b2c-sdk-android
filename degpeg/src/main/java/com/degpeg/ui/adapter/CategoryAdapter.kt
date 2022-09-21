@@ -25,8 +25,11 @@ internal class CategoryAdapter() :
     }
 
     fun set(mList: MutableList<SessionCategoryItem>?) {
-        if (mList.isNullOrEmpty()) return
         submitList(mList)
+    }
+
+    fun set(mList: MutableList<SessionCategoryItem>?, commitCallback : ()->Unit) {
+        submitList(mList, commitCallback)
     }
 
     class ViewHolder(

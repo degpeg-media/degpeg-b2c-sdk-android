@@ -1,22 +1,19 @@
 package com.degpeg.network
 
-import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.b2csdk.DegpegSDKProvider.PROVIDER_ID
 import com.degpeg.b2csdk.DegpegSDKProvider.PUBLISHER_ID
 import com.degpeg.b2csdk.DegpegSDKProvider.USER_ROLE
-import com.degpeg.b2csdk.UserRole
 import com.degpeg.b2csdk.UserRole.PROVIDER
-import com.degpeg.enumuration.AppConfig
 import com.degpeg.enumuration.AppConfig.*
 
 internal object NetworkURL {
-    val appConfig = DEV
+    val appConfig = PRODUCTION
     val ROOT_URL: String
         get() {
             return when (appConfig) {
                 DEV -> "https://dev1.api.degpeg.com/"
                 STAGING -> "https://dev1.api.degpeg.com/"
-                PRODUCTION -> "https://dev1.api.degpeg.com/"
+                PRODUCTION -> "https://prod1.api.degpeg.com/"
             }
         }
 

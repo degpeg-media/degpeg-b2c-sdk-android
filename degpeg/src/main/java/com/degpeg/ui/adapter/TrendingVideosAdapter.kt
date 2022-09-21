@@ -35,8 +35,11 @@ internal class TrendingVideosAdapter(
     }
 
     fun set(mList: MutableList<VideoContentItem>?) {
-        if (mList.isNullOrEmpty()) return
         submitList(mList)
+    }
+
+    fun set(mList: MutableList<VideoContentItem>?, commitCallback : ()->Unit) {
+        submitList(mList, commitCallback)
     }
 
     class ViewHolder(

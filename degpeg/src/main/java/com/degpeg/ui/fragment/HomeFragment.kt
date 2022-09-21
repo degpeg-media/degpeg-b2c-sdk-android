@@ -95,17 +95,16 @@ internal class HomeFragment() : BaseFragment(), View.OnClickListener {
             getString(R.string.videos),
             ContextCompat.getColor(requireContext(), R.color.black)
         )
-//        binding.trending.txtTrendingHeader.setOnClickListener(this)
     }
 
     private fun setUpTrendingData(mList: ArrayList<VideoContentItem>?) {
         if (trendingVideoAdapter == null) setTrendingList()
-        trendingVideoAdapter?.set(mList)
-
-        if (trendingVideoAdapter?.currentList.isNullOrEmpty()) {
-            binding.trending.root.gone()
-        } else {
-            binding.trending.root.visible()
+        trendingVideoAdapter?.set(mList) {
+            if (trendingVideoAdapter?.currentList.isNullOrEmpty()) {
+                binding.trending.root.gone()
+            } else {
+                binding.trending.root.visible()
+            }
         }
     }
 
@@ -121,17 +120,16 @@ internal class HomeFragment() : BaseFragment(), View.OnClickListener {
             getString(R.string.shows),
             ContextCompat.getColor(requireContext(), R.color.black)
         )
-//        binding.upcomingShows.txtHeader.setOnClickListener(this)
     }
 
     private fun setUpcomingData(mList: ArrayList<VideoContentItem>?) {
         if (upcomingVideoAdapter == null) setUpcomingList()
-        upcomingVideoAdapter?.set(mList)
-
-        if (upcomingVideoAdapter?.currentList.isNullOrEmpty()) {
-            binding.upcomingShows.root.gone()
-        } else {
-            binding.upcomingShows.root.visible()
+        upcomingVideoAdapter?.set(mList) {
+            if (upcomingVideoAdapter?.currentList.isNullOrEmpty()) {
+                binding.upcomingShows.root.gone()
+            } else {
+                binding.upcomingShows.root.visible()
+            }
         }
     }
 
@@ -210,17 +208,16 @@ internal class HomeFragment() : BaseFragment(), View.OnClickListener {
     private fun seUpCategoriesList() {
         categoryAdapter = CategoryAdapter()
         binding.categories.rvCategory.adapter = categoryAdapter
-//        binding.categories.txtHeader.setOnClickListener(this)
     }
 
     private fun seUpCategories(list: ArrayList<SessionCategoryItem>) {
         if (categoryAdapter == null) setUpcomingList()
-        categoryAdapter?.set(list)
-
-        if (categoryAdapter?.currentList.isNullOrEmpty()) {
-            binding.categories.root.gone()
-        } else {
-            binding.categories.root.visible()
+        categoryAdapter?.set(list) {
+            if (categoryAdapter?.currentList.isNullOrEmpty()) {
+                binding.categories.root.gone()
+            } else {
+                binding.categories.root.visible()
+            }
         }
     }
 

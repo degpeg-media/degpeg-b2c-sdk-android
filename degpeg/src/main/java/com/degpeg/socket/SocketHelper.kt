@@ -8,20 +8,12 @@ internal object SocketHelper {
     internal const val NS_PUBLISHER = "content-publisher"
     internal const val NS_PROVIDER = "content-provider"
 
-    // <port> 9014 for dev.
-//    private const val DEV_URL = "https://dev.${BASE_URL}:9014/"
-//    private const val PROD_URL = "https://prod.${BASE_URL}:9014/"
-//    private const val STAGING_URL = "https://staging.${BASE_URL}:9014/"
-//    private const val DEMO_URL = "https://demo.${BASE_URL}:9014/"
-
-//    const val SOCKET_URL = DEV_URL
-
     val SOCKET_URL: String
         get() {
             return when (NetworkURL.appConfig) {
                 AppConfig.DEV -> "https://dev.${BASE_URL}:9014/"
                 AppConfig.STAGING -> "https://staging.${BASE_URL}:9014/"
-                AppConfig.PRODUCTION -> "https://prod.${BASE_URL}:9014/"
+                AppConfig.PRODUCTION -> "https://prod1.${BASE_URL}:9015/"
                 else -> "https://demo.${BASE_URL}:9014/"
             }
         }
