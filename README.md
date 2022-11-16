@@ -132,5 +132,5 @@ DegpegSDKProvider.startPlayer(
 ```
 
 # For Java support please refer the JAVA document 
-<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/README.md">JAVA Document</a>
+<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/README_JAVA.md">JAVA Document</a>
 
