@@ -9,6 +9,7 @@ import com.degpeg.R
 import com.degpeg.databinding.ActivityVideoPlayerBinding
 import com.degpeg.databinding.LayoutControllerBinding
 import com.degpeg.utility.afterTextChanged
+import com.degpeg.utility.getString
 import com.degpeg.utility.gone
 import com.degpeg.utility.visible
 import com.degpeg.videoplayer.PlayerContentActivity
@@ -43,10 +44,27 @@ internal class VideoPlayerActivity : PlayerContentActivity() {
             if (videoContentItem == null) return
             streamUrl = videoContentItem?.webVideoUrl.orEmpty()
             fetchContentData()
+            startPlay()
+        } else if (intent.hasExtra("sessionId")) {
+            binding.lyBottom.root.gone()
+            liveUiManage()
+            binding.contentLoader.visible()
+            fetchSessionDetail(
+                sessionId = intent.getString("sessionId", ""),
+                onSuccess = {
+                    binding.contentLoader.gone()
+                    binding.lyBottom.root.visible()
+                    videoContentItem = it
+                    streamUrl = videoContentItem?.webVideoUrl.orEmpty()
+                    fetchContentData()
+                    startPlay()
+                }, onError = {
+                    binding.contentLoader.gone()
+                })
         } else {
             streamUrl = intent.getStringExtra("streamUrl").orEmpty()
+            startPlay()
         }
-        startPlay()
     }
 
     private fun setUpScreenContent() {

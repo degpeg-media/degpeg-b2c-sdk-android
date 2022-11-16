@@ -27,6 +27,9 @@ internal interface ApiService {
     @GET("live-session-categories/")
     suspend fun getCategories(): Response<ArrayList<SessionCategoryItem>>
 
+    @GET("live-sessions/{sessionId}")
+    suspend fun getSessionDetail(@Path("sessionId") sessionId: String): Response<VideoContentItem>
+
     @GET("users")
     suspend fun getUserDetail(@QueryMap filterMap: HashMap<String, Any>): Response<ArrayList<UserDetail>>
 

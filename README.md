@@ -1,15 +1,15 @@
 <h1 align="center">DEGPEG</h1>
-<!-- <p align="center">
-  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android/month.svg"/></a>
-  <a href="https://jitpack.io/#degpeg-media/degpeg-b2c-sdk-android"> <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/></a>
-</p> -->
+<p align="center">
+  <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android/month.svg"/>
+  <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/>
+</p>
 
 Degpeg is Live Commerce Platform with unique features like multi-streaming ( compatible with 30+ Social platforms ) for brands & content creators worldwide. The vision of Degpeg is to empower live streaming in a way that can be used not only to produce real-time content but build a meaningful business out of it, for content creators or advertisers or associated businesses like e-commerce, retail, education, gaming etc.
 
 At Degpeg, we keep on improving our platform consistently to provide amazing live streaming experience to users, content creators and brand advertisers, which can increase engagement, brand outreach, retention rates & revenue generation. We can offer you an inclusive, collaborative atmosphere to develop your skills as part of a global multi-discipline development team with opportunities to be mentored by forward-thinking architects.
 
 As part of product enhancements Degpeg is looking for vendors to support product development activities. Through this document the details of the requirements are outlined for which proposals are invited from vendors. As outlined in the Non-disclosure agreement contents of this document are strictly confidential to the vendor with whom the document is shared and degpeg.
-
+    
 
 # Features:
 
@@ -39,7 +39,6 @@ allprojects {
     repositories {
          maven {
             url "https://jitpack.io"
-            credentials { username 'jp_i6nttc8gkplpnmntma3brth0j9' }
         }
     }
 }
@@ -52,6 +51,8 @@ dependencies {
      implementation 'com.github.degpeg-media:degpeg-b2c-sdk-android:release_version'
 }
 ```
+Current release_version : <img src="https://jitpack.io/v/degpeg-media/degpeg-b2c-sdk-android.svg"/>
+
 
 3. Create the Application class and extends Controller class. Also add the application class into the manifest.xml file.
 
@@ -63,10 +64,14 @@ class AppController : Controller() {
   }
 }
 ```
+
 Add the application class into the manifest.xml file
 ```xml
-<application android:name=".AppController">
-  
+<application
+    android:name=".AppController"
+    tools:replace="android:name"
+>
+
 </application>
 ```
 
@@ -83,6 +88,12 @@ DegpegSDKProvider.init(
         runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
     })
 
+```
+
+* UserRoles  
+```
+UserRole.PUBLISHER
+UserRole.PROVIDER
 ```
 
 5. Provide the current user details
@@ -105,8 +116,21 @@ DegpegSDKProvider.updateUser(
 * Use the SDK as fragment
 ```kotlin
 DegpegSDKProvider.useAsFragment(
-            supportFragmentManager,
-            binding.container.id,
-            publisherId = publisherId
-        )
+    supportFragmentManager = supportFragmentManager,
+    containerId = binding.container.id,
+    onError = {
+    }
+)
 ```
+
+* Launch the streaming player with session id 
+```kotlin
+DegpegSDKProvider.startPlayer(
+                activity = this, 
+                videoSessionId = "6264d7678737f6bbe4d1c37"
+            )
+```
+
+# For Java support please refer the JAVA document 
+<a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/README.md">JAVA Document</a>
+

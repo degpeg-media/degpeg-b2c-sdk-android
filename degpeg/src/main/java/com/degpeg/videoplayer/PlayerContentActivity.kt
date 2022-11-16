@@ -3,12 +3,14 @@ package com.degpeg.videoplayer
 import android.content.Intent
 import android.view.View
 import com.degpeg.R
+import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.databinding.ActivityVideoPlayerBinding
 import com.degpeg.model.ChatItem
 import com.degpeg.model.CountModel
 import com.degpeg.model.ProductModel
 import com.degpeg.model.VideoContentItem
 import com.degpeg.network.NetworkURL
+import com.degpeg.network.typeCall
 import com.degpeg.socket.ChatMessageListener
 import com.degpeg.socket.ConnectedListener
 import com.degpeg.socket.CountModelListener
@@ -36,6 +38,28 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
     private var sessionId = ""
     private lateinit var chatAdapter: ChatAdapter
     private lateinit var productAdapter: ProductListAdapter
+
+    protected fun fetchSessionDetail(
+        sessionId: String,
+        onSuccess: (data: VideoContentItem) -> Unit,
+        onError: () -> Unit
+    ) {
+        chatViewModel.getSessionDetail(sessionId).observe(this) { response ->
+            response.status.typeCall(
+                success = {
+                    if (response.data != null) {
+                        onSuccess.invoke(response.data)
+                    } else {
+                        toast("Unable to fetch session detail")
+                    }
+                },
+                error = {
+                    onError.invoke()
+                    toast(response.message)
+                }
+            )
+        }
+    }
 
     protected fun fetchContentData() {
         if (videoContentItem == null) return

@@ -146,4 +146,15 @@
             layout="@layout/layout_chat_bottom" />
     </LinearLayout>
 
+    <ProgressBar
+        android:id="@+id/contentLoader"
+        android:layout_width="@dimen/_28sdp"
+        android:layout_height="@dimen/_28sdp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="bottom"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone"
+        tools:visibility="visible" />
+
 </RelativeLayout>

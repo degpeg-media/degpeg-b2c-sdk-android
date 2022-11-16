@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.degpeg_sample.databinding.ActivityFragmentSampleBinding
+import com.degpeg.utility.Log
 
 class FragmentSampleActivity : AppCompatActivity() {
 
@@ -18,8 +19,10 @@ class FragmentSampleActivity : AppCompatActivity() {
 
     private fun initUI() {
         DegpegSDKProvider.useAsFragment(
-            supportFragmentManager,
-            binding.container.id,
+            supportFragmentManager = supportFragmentManager,
+            containerId = binding.container.id,
+            onError = {
+            }
         )
     }
 }

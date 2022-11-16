@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
+import com.degpeg.common.Navigation
 import com.degpeg.model.User
 import com.degpeg.network.ResponseHandler
 import com.degpeg.repository.ContentRepository
@@ -82,10 +83,8 @@ object DegpegSDKProvider {
         }
     }
 
-    internal fun startPlayer(activity: Activity, streamUrl: String = TEST_LIVE_STREAM_URL) {
-        activity.startActivity(Intent(activity, VideoPlayerActivity::class.java).apply {
-            putExtra("streamUrl", streamUrl)
-        })
+    fun startPlayer(activity: Activity, videoSessionId: String) {
+        Navigation.startPlayer(activity, videoSessionId)
     }
 
     internal fun String.getMediaItem(): MediaItem {

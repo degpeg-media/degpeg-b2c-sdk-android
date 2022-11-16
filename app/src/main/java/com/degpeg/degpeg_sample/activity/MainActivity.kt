@@ -34,8 +34,7 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
         setUpToolbar("Degpeg Sample", false)
         binding.clickListener = this
 
-        DegpegSDKProvider.init(
-            appId = appId,
+        DegpegSDKProvider.init(appId = appId,
             secretKey = secretKey,
             publisherId = publisherId,
             providerId = providerId,
@@ -65,8 +64,11 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
     private fun setUpImageSlider() {
         binding.rvSliderImage.onFlingListener = null
         PagerSnapHelper().attachToRecyclerView(binding.rvSliderImage)
-        binding.rvSliderImage.adapter =
-            SliderAdapter(getDummyImage(), callback = { _, _ -> binding.btnStart.performClick()})
+        binding.rvSliderImage.adapter = SliderAdapter(getDummyImage(), callback = { _, _ ->
+            DegpegSDKProvider.startPlayer(
+                activity = this, videoSessionId = "6264d7678737f6bbe4d1c37"
+            )
+        })
     }
 
     private fun dummyData(): MutableList<ContentModel> {
@@ -101,12 +103,9 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
         super.onClick(v)
         when (v) {
             binding.btnStart -> {
-                DegpegSDKProvider.startAsActivity(
-                    activity = this,
-                    onError = {
-                        Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-                    }
-                )
+                DegpegSDKProvider.startAsActivity(activity = this, onError = {
+                    Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+                })
             }
             binding.btnFragment -> {
                 startActivity(Intent(this, FragmentSampleActivity::class.java))

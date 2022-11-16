@@ -32,4 +32,6 @@ internal object ContentRepository {
     suspend fun getChannelDetails(channelId: String) = apiService.getChannelDetails(channelId)
 
     suspend fun getCategories() = apiService.getCategories()
+
+    suspend fun getSessionDetail(sessionId:String) = apiService.getSessionDetail(sessionId)
 }

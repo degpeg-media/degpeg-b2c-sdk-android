@@ -26,4 +26,10 @@ internal object Navigation {
             putExtra("videoContentItem", videoContentItem)
         })
     }
+
+    fun startPlayer(activity: Activity, sessionId: String) {
+        activity.startActivity(Intent(activity, VideoPlayerActivity::class.java).apply {
+            putExtra("sessionId", sessionId)
+        })
+    }
 }
