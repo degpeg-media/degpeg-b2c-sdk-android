@@ -6,6 +6,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.degpeg.Controller
 import com.degpeg.R
+import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.databinding.ActivityVideoPlayerBinding
 import com.degpeg.databinding.LayoutControllerBinding
 import com.degpeg.utility.afterTextChanged
@@ -38,6 +39,7 @@ internal class VideoPlayerActivity : PlayerContentActivity() {
 
         userViewModel = UserViewModel.getInstance()
         setUpScreenContent()
+        updateAppUiConfig(DegpegSDKProvider.appUiConfig)
 
         if (intent.hasExtra("videoContentItem")) {
             videoContentItem = intent.getParcelableExtra("videoContentItem")

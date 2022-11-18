@@ -18,6 +18,7 @@ import com.degpeg.degpeg_sample.bottomsheet.SettingBottomSheet
 import com.degpeg.degpeg_sample.common.ActionBarActivity
 import com.degpeg.degpeg_sample.databinding.ActivityMainBinding
 import com.degpeg.degpeg_sample.model.ContentModel
+import com.degpeg.model.AppUiConfig
 import com.degpeg.model.User
 
 class MainActivity : ActionBarActivity(), View.OnClickListener {
@@ -44,6 +45,16 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
                 runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
             })
 
+        DegpegSDKProvider.updateAppUiConfig(
+            AppUiConfig(
+                isChatEnable = true,
+                isLikeEnable = true,
+                isProductEnable = false,
+                isShareEnable = false,
+                isMuteEnable = true
+            )
+        )
+
         DegpegSDKProvider.updateUser(
             User(userName = "Dhaval Patel", userId = "6278c4556cb38a7a9c10df6e")
         )
@@ -66,7 +77,7 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
         PagerSnapHelper().attachToRecyclerView(binding.rvSliderImage)
         binding.rvSliderImage.adapter = SliderAdapter(getDummyImage(), callback = { _, _ ->
             DegpegSDKProvider.startPlayer(
-                activity = this, videoSessionId = "6264d7678737f6bbe4d1c37"
+                activity = this, videoSessionId = "6203642ba958e382ff246d66"
             )
         })
     }

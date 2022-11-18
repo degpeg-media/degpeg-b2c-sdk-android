@@ -131,6 +131,23 @@ DegpegSDKProvider.startPlayer(
             )
 ```
 
+# Customization
+Update the player screen. 
+Default all views are visible, you can pass the specific parameters for manage the view visibility
+
+```kotlin
+DegpegSDKProvider.updateAppUiConfig(
+    AppUiConfig(
+        isChatEnable = true,
+        isLikeEnable = true,
+        isProductEnable = false,
+        isShareEnable = false,
+        isMuteEnable = true
+    )
+)
+```
+
+
 # For Java support please refer the JAVA document 
 <a href="https://github.com/degpeg-media/degpeg-b2c-sdk-android/blob/master/README_JAVA.md">JAVA Document</a>
 

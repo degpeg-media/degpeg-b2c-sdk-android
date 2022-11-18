@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
+    android:layout_marginEnd="@dimen/_10sdp"
     android:orientation="horizontal">
 
     <com.degpeg.views.EditText
@@ -32,7 +33,6 @@
         android:layout_height="@dimen/_30sdp"
         android:layout_marginVertical="@dimen/_10sdp"
         android:layout_marginStart="@dimen/_8sdp"
-        android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/ic_send"
         android:stateListAnimator="@animator/selector_animator"
         android:visibility="gone" />
@@ -77,7 +77,6 @@
             android:layout_height="@dimen/_28sdp"
             android:layout_marginVertical="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_8sdp"
-            android:layout_marginEnd="@dimen/_10sdp"
             android:background="@drawable/ic_unmute"
             android:stateListAnimator="@animator/selector_animator" />
     </LinearLayout>

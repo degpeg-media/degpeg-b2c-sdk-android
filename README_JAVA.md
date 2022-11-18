@@ -147,4 +147,19 @@ DegpegSDKProvider.INSTANCE.startPlayer(
             )
 ```
 
+# Customization
+Update the player screen.
+Default all views are visible, you can pass the specific parameters for manage the view visibility
+
+```java
+AppUiConfig appUiConfig = new AppUiConfig();
+appUiConfig.setChatEnable(true);
+appUiConfig.setMuteEnable(true);
+appUiConfig.setLikeEnable(true);
+appUiConfig.setProductEnable(false);
+appUiConfig.setShareEnable(false);
+
+DegpegSDKProvider.INSTANCE.updateAppUiConfig(appUiConfig);
+```
+
 

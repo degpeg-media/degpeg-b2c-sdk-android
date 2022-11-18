@@ -6,18 +6,16 @@ import androidx.annotation.IdRes
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.commit
 import com.degpeg.common.Navigation
+import com.degpeg.model.AppUiConfig
 import com.degpeg.model.User
 import com.degpeg.network.ResponseHandler
 import com.degpeg.repository.ContentRepository
 import com.degpeg.ui.activity.DegpegHomeActivity
-import com.degpeg.ui.activity.VideoPlayerActivity
 import com.degpeg.ui.fragment.HomeFragment
-import com.degpeg.utility.Constants.TEST_LIVE_STREAM_URL
 import com.degpeg.utility.LocalDataHelper
 import com.google.android.exoplayer2.MediaItem
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
-import java.lang.RuntimeException
 
 object DegpegSDKProvider {
 
@@ -26,6 +24,7 @@ object DegpegSDKProvider {
     internal var PUBLISHER_ID: String = ""
     internal var PROVIDER_ID: String = ""
     internal var USER_ROLE: UserRole = UserRole.PUBLISHER
+    internal var appUiConfig = AppUiConfig()
 
     fun init(
         appId: String,
@@ -46,6 +45,10 @@ object DegpegSDKProvider {
             LocalDataHelper.authToken = ""
         }
         updateAuthToken(appId, secretKey, onSuccess, onError)
+    }
+
+    fun updateAppUiConfig(appUiConfig: AppUiConfig){
+        this.appUiConfig = appUiConfig
     }
 
     fun startAsActivity(

@@ -9,6 +9,7 @@ import com.degpeg.b2csdk.DegpegSDKProvider;
 import com.degpeg.b2csdk.UserRole;
 import com.degpeg.degpeg_sample.LocalDataHelper;
 import com.degpeg.degpeg_sample.databinding.ActivityMainBinding;
+import com.degpeg.model.AppUiConfig;
 import com.degpeg.model.User;
 
 import kotlin.Unit;
@@ -39,37 +40,47 @@ public class JavaSampleActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         Toast.makeText(JavaSampleActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     });
+                    DegpegSDKProvider.INSTANCE.startPlayer(this, "6203642ba958e382ff246d66");
                     return null;
                 },
                 s -> {
                     runOnUiThread(() -> {
-                        Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JavaSampleActivity.this, "Error : " + s, Toast.LENGTH_SHORT).show();
                     });
                     return null;
                 });
 
+        AppUiConfig appUiConfig = new AppUiConfig();
+        appUiConfig.setChatEnable(true);
+        appUiConfig.setMuteEnable(true);
+        appUiConfig.setLikeEnable(true);
+        appUiConfig.setProductEnable(false);
+        appUiConfig.setShareEnable(false);
+
+        DegpegSDKProvider.INSTANCE.updateAppUiConfig(appUiConfig);
+
         DegpegSDKProvider.INSTANCE.updateUser(
-                 new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
+                new User("Dhaval Patel", "6278c4556cb38a7a9c10df6e")
         );
     }
 
-    private void startAsActivity(){
+    private void startAsActivity() {
         DegpegSDKProvider.INSTANCE.startAsActivity(
                 this,
                 s -> {
                     runOnUiThread(() -> {
-                        Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JavaSampleActivity.this, "Error : " + s, Toast.LENGTH_SHORT).show();
                     });
                     return null;
                 });
     }
 
-    private void useAsFragment(){
+    private void useAsFragment() {
         DegpegSDKProvider.INSTANCE.useAsFragment(
                 getSupportFragmentManager(),
                 0, s -> {
                     runOnUiThread(() -> {
-                        Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JavaSampleActivity.this, "Error : " + s, Toast.LENGTH_SHORT).show();
                     });
                     return null;
                 });

@@ -2,9 +2,11 @@ package com.degpeg.videoplayer
 
 import android.content.Intent
 import android.view.View
+import android.view.View.*
 import com.degpeg.R
-import com.degpeg.b2csdk.DegpegSDKProvider
 import com.degpeg.databinding.ActivityVideoPlayerBinding
+import com.degpeg.enumuration.AppConfig
+import com.degpeg.model.*
 import com.degpeg.model.ChatItem
 import com.degpeg.model.CountModel
 import com.degpeg.model.ProductModel
@@ -109,6 +111,17 @@ internal abstract class PlayerContentActivity : BasePlayerActivity(), View.OnCli
             binding.layoutTopBar.txtUserCount.text = it.getFormatted()
             chatViewModel.updateViewCount(sessionId)
         }
+    }
+
+    /**
+     * Manage action button visibility
+     * */
+    protected fun updateAppUiConfig(appConfig: AppUiConfig) {
+        binding.lyBottom.edtMessage.visibility = VISIBLE.takeIf { appConfig.isChatEnable } ?: INVISIBLE
+        binding.lyBottom.btnLike.visibility = VISIBLE.takeIf { appConfig.isLikeEnable } ?: GONE
+        binding.lyBottom.btnProductToggle.visibility = VISIBLE.takeIf { appConfig.isProductEnable } ?: GONE
+        binding.lyBottom.btnShare.visibility = VISIBLE.takeIf { appConfig.isShareEnable } ?: GONE
+        binding.lyBottom.btnMute.visibility = VISIBLE.takeIf { appConfig.isMuteEnable } ?: GONE
     }
 
     /**
