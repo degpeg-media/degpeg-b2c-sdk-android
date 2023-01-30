@@ -6,14 +6,10 @@ import com.degpeg.utility.Parcelable.parcelableCreator
 import com.google.gson.annotations.SerializedName
 
 internal data class UserDetail(
-    @SerializedName("addr_city")
-    val addrCity: String?,
-    @SerializedName("addr_country")
-    val addrCountry: String?,
-    @SerializedName("addr_pincode")
-    val addrPincode: String?,
-    @SerializedName("addr_state")
-    val addrState: String?,
+    @SerializedName("addr_city") val addrCity: String?,
+    @SerializedName("addr_country") val addrCountry: String?,
+    @SerializedName("addr_pincode") val addrPincode: String?,
+    @SerializedName("addr_state") val addrState: String?,
     val address: String?,
     val appId: String?,
     val avatar: String?,
@@ -32,21 +28,17 @@ internal data class UserDetail(
     val message: String?,
     val mobile: String?,
     val name: String?,
-    @SerializedName("organization_name")
-    val organizationName: String?,
+    @SerializedName("organization_name") val organizationName: String?,
     val otp: String?,
     val password: String?,
     val phone: String?,
-    @SerializedName("pref_categories")
-    val prefCategories: List<String>?,
+    @SerializedName("pref_categories") val prefCategories: List<String>?,
     val roleAssignedBy: String?,
     val roles: List<String>?,
     val secretKey: String?,
-    @SerializedName("sign_in_through")
-    val signInThrough: String?,
+    @SerializedName("sign_in_through") val signInThrough: String?,
     val status: String?,
-    @SerializedName("website_link")
-    val websiteLink: String?
+    @SerializedName("website_link") val websiteLink: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         addrCity = parcel.readString(),
@@ -144,10 +136,9 @@ internal data class UserDetail(
 
     fun getInitials(): String {
         val str = getNonNullName()
-        if (str.isNullOrEmpty()) return "D"
-       return str.split(' ')
-            .mapNotNull { it.firstOrNull()?.toString() }
-            .reduce { acc, s -> acc + s }.uppercase()
+        if (str.isEmpty()) return "D"
+        return str.split(' ').mapNotNull { it.firstOrNull()?.toString() }
+            .reduceOrNull { acc, s -> acc + s }?.uppercase() ?: ""
     }
 
 }
