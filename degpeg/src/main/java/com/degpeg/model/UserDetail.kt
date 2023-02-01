@@ -137,12 +137,12 @@ internal data class UserDetail(
     fun getInitials(): String {
         try {
             val str = getNonNullName()
-            if (str.isEmpty()) return "-"
+            if (str.isEmpty()) return "Un"
             return str.split(' ').mapNotNull { it.firstOrNull()?.toString() }
                 .reduceOrNull { acc, s -> acc + s }?.uppercase() ?: ""
         }
         catch (e:Exception){
-            return "-"
+            return "Un"
         }
     }
 
