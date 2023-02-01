@@ -135,10 +135,15 @@ internal data class UserDetail(
     }
 
     fun getInitials(): String {
-        val str = getNonNullName()
-        if (str.isEmpty()) return "D"
-        return str.split(' ').mapNotNull { it.firstOrNull()?.toString() }
-            .reduceOrNull { acc, s -> acc + s }?.uppercase() ?: ""
+        try {
+            val str = getNonNullName()
+            if (str.isEmpty()) return "-"
+            return str.split(' ').mapNotNull { it.firstOrNull()?.toString() }
+                .reduceOrNull { acc, s -> acc + s }?.uppercase() ?: ""
+        }
+        catch (e:Exception){
+            return "-"
+        }
     }
 
 }

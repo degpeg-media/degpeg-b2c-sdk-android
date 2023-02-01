@@ -32,7 +32,7 @@ internal class ChatAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: ChatItem) {
-            binding.imgChatProfile.setImageWithInitial("", data.getInitials())
+//            binding.imgChatProfile.setImageWithInitial("", data.getInitials())
             binding.txtMessage.text = data.message.trim()
             binding.txtUserName.text = data.getNonNullUserName()
         }

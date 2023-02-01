@@ -86,7 +86,19 @@ object DegpegSDKProvider {
         }
     }
 
-    fun startPlayer(activity: Activity, videoSessionId: String) {
+    fun startPlayer(
+        activity: Activity,
+        videoSessionId: String,
+        onError: ((errorMessage: String) -> Unit)? = null
+    ) {
+        if (LocalDataHelper.authToken.isNullOrEmpty()) {
+            onError?.invoke("AuthToken Required to start Activity")
+            return
+        }
+        if (LocalDataHelper.appUser == null) {
+            onError?.invoke("Set user information before use the SDK")
+            return
+        }
         Navigation.startPlayer(activity, videoSessionId)
     }
 

@@ -118,9 +118,9 @@ DegpegSDKProvider.INSTANCE.updateUser(
 ```
  DegpegSDKProvider.INSTANCE.startAsActivity(
     this,
-    s -> {
+    errorString -> {
         runOnUiThread(() -> {
-            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
         });
         return null;
     });
@@ -131,9 +131,9 @@ DegpegSDKProvider.INSTANCE.updateUser(
  DegpegSDKProvider.INSTANCE.useAsFragment(
     getSupportFragmentManager(),
     0,
-    s -> {
+    errorString -> {
         runOnUiThread(() -> {
-            Toast.makeText(JavaSampleActivity.this, "Error : "+s, Toast.LENGTH_SHORT).show();
+            Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
         });
         return null;
     });
@@ -143,7 +143,13 @@ DegpegSDKProvider.INSTANCE.updateUser(
 ```
 DegpegSDKProvider.INSTANCE.startPlayer(
                 activity = this, 
-                videoSessionId = "6264d7678737f6bbe4d1c37"
+                videoSessionId = "6264d7678737f6bbe4d1c37",
+                errorString -> {
+                    runOnUiThread(() -> {
+                        Toast.makeText(JavaSampleActivity.this, "Error : "+errorString, Toast.LENGTH_SHORT).show();
+                    });
+                    return null;
+                });
             )
 ```
 
@@ -151,7 +157,7 @@ DegpegSDKProvider.INSTANCE.startPlayer(
 Update the player screen.
 Default all views are visible, you can pass the specific parameters for manage the view visibility
 
-```java
+```
 AppUiConfig appUiConfig = new AppUiConfig();
 appUiConfig.setChatEnable(true);
 appUiConfig.setMuteEnable(true);

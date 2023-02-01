@@ -40,12 +40,21 @@ public class JavaSampleActivity extends AppCompatActivity {
                     runOnUiThread(() -> {
                         Toast.makeText(JavaSampleActivity.this, "Success", Toast.LENGTH_SHORT).show();
                     });
-                    DegpegSDKProvider.INSTANCE.startPlayer(this, "6203642ba958e382ff246d66");
+                    DegpegSDKProvider.INSTANCE.startPlayer(
+                            this,
+                            "6203642ba958e382ff246d66",
+                            errorString -> {
+                                runOnUiThread(() -> {
+                                    Toast.makeText(JavaSampleActivity.this, "Error : " + errorString, Toast.LENGTH_SHORT).show();
+                                });
+                                return null;
+                            }
+                            );
                     return null;
                 },
-                s -> {
+                errorString -> {
                     runOnUiThread(() -> {
-                        Toast.makeText(JavaSampleActivity.this, "Error : " + s, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(JavaSampleActivity.this, "Error : " + errorString, Toast.LENGTH_SHORT).show();
                     });
                     return null;
                 });

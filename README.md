@@ -127,7 +127,9 @@ DegpegSDKProvider.useAsFragment(
 ```kotlin
 DegpegSDKProvider.startPlayer(
                 activity = this, 
-                videoSessionId = "6264d7678737f6bbe4d1c37"
+                videoSessionId = "6264d7678737f6bbe4d1c37",
+                onError = {
+                }
             )
 ```
 

@@ -40,7 +40,15 @@ class MainActivity : ActionBarActivity(), View.OnClickListener {
             publisherId = publisherId,
             providerId = providerId,
             userRole = userRole,
-            onSuccess = { },
+            onSuccess = {
+                DegpegSDKProvider.startPlayer(
+                    activity = this,
+                    videoSessionId = "61fbc2cba958e382ff246c25",
+                    onError = {
+                        runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+                    }
+                )
+            },
             onError = {
                 runOnUiThread { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
             })
