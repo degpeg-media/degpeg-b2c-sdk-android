@@ -5,20 +5,15 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.degpeg.model.ChatItem
 import com.degpeg.model.ProductModel
-import com.degpeg.model.VideoContentItem
 import com.degpeg.network.Resource
 import com.degpeg.network.ResponseHandler
 import com.degpeg.repository.ChatRepository
 import com.degpeg.repository.ContentRepository
 import com.degpeg.socket.SocketHelper.CHAT_MESSAGE
 import com.degpeg.socket.SocketIO
-import com.degpeg.utility.toJSONObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.launch
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
-import kotlin.collections.isNullOrEmpty
 import kotlin.collections.set
 
 internal class ChatViewModel : CountViewModel() {
